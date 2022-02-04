@@ -2,7 +2,7 @@
 docker image nextcloud with video preview
 
 Then I added
-
+```code
 'enable_previews' => true,
 'enabledPreviewProviders' =>
  array (
@@ -24,7 +24,7 @@ Then I added
    15 => 'OC\\Preview\\MP4',
    16 => 'OC\\Preview\\AVI',
  ),
-
+```
 at the end of my config.php.
 
 But I still cannot see video preview.
