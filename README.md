@@ -30,5 +30,7 @@ at the end of my config.php.
 But I still cannot see video preview.
 
 build preview
+```code
 docker exec --user www-data -it nextcloud_app_1 /bin/bash
 php ./occ preview:generate-all -vvv
+```
