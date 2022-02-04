@@ -1,0 +1,29 @@
+version: '3.2'
+
+services:
+  db:
+    image: postgres:13.4-bullseye
+    restart: always
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=superandrey
+      - POSTGRES_PASSWORD=superpassword
+
+  app:
+    image: nextcloud:23.0.0
+    restart: always
+    ports:
+      - 8880:80
+    volumes:
+      - ./data:/var/www/html
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=superandrey
+      - POSTGRES_PASSWORD=superpassword
+      - NEXTCLOUD_ADMIN_PASSWORD=qwer45
+      - NEXTCLOUD_ADMIN_USER=admin
+    depends_on:
+      - db
