@@ -12,7 +12,7 @@ services:
       - POSTGRES_PASSWORD=superpassword
 
   app:
-    image: nextcloud:23.0.0
+    image: selukov/nextcloud
     restart: always
     ports:
       - 8880:80
