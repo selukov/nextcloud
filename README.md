@@ -1,7 +1,9 @@
 # nextcloud
 docker image nextcloud with video preview
 
+```code
 docker pull selukov/nextcloud:latest
+```
 
 Then I added
 ```code
