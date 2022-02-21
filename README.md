@@ -1,6 +1,8 @@
 # nextcloud
 docker image nextcloud with video preview
 
+docker pull selukov/nextcloud:latest
+
 Then I added
 ```code
 'enable_previews' => true,
