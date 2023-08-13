@@ -1,4 +1,4 @@
-FROM nextcloud:25.0.3
+FROM nextcloud:25.0.10
 
 RUN apt-get update && apt-get install -y ffmpeg imagemagick ghostscript
 
