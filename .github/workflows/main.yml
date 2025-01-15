@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest  # Используем хост GitHub вместо self-hosted
 
     steps:
       # Проверка кода из репозитория
