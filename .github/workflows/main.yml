@@ -1,9 +1,9 @@
-name: Build Docker Image
+name: Build and Push Docker Image
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "*"
 
 jobs:
   build:
@@ -14,7 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Вход в Docker Registry (опционально)
+      # Получение версии из тега
+      - name: Extract Tag Version
+        id: vars
+        run: echo "TAG_VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
+      # Вход в Docker Registry
       - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
@@ -24,9 +29,10 @@ jobs:
       # Сборка Docker-образа
       - name: Build Docker Image
         run: |
-          docker build -t my-image-name:latest .
+          docker build -t selukov/nextcloud:latest -t selukov/nextcloud:${{ env.TAG_VERSION }} .
 
-      # Загрузка образа в DockerHub (опционально)
+      # Загрузка образа в DockerHub
       - name: Push Docker Image
         run: |
-          docker push my-image-name:latest
+          docker push selukov/nextcloud:latest
+          docker push selukov/nextcloud:${{ env.TAG_VERSION }}
